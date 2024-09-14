@@ -1,6 +1,8 @@
+# list available seats to user
 def display_available_seats(seats):
     print("\nAvailable seats: ", seats)
 
+# prompt user for seat purchase
 def purchase_ticket(seats):
     while True:
         display_available_seats(seats)
