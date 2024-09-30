@@ -4,8 +4,8 @@ INCHES_TO_METERS = 0.0254
 
 def main():
     # Ask the user for weight in pounds and height in inches
-    pounds = get_valid_input("Enter your weight in pounds: ")
-    inches = get_valid_input("Enter your height in inches: ")
+    pounds = int(input("Enter your weight in pounds: "))
+    inches = int(input("Enter your height in inches: "))
 
     # Conversion to Metric
     kg = pounds * POUNDS_TO_KG
@@ -13,10 +13,12 @@ def main():
 
     # BMI Calculation
     bmi = calculate_bmi(kg, meters)
-
-    # Display the calculated BMI and BMI category
-    print(f"Your BMI is: {bmi:.2f}")
-    print(f"Your BMI category is: {categorize_bmi(bmi)}")
+    if bmi < 0:
+        print ("please enter positive integers.")
+ # Display the calculated BMI and BMI category
+    else:
+        print(f"Your BMI is: {bmi:.2f}")
+        print(f"Your BMI category is: {categorize_bmi(bmi)}")
 
 def calculate_bmi(weight, height):
     #calculate BMI using metric units.
@@ -32,17 +34,6 @@ def categorize_bmi(bmi):
         return "Overweight"
     else:
         return "Obese"
-
-def get_valid_input(prompt):
-    #get valid numerical input from the user.
-    while True:
-        try:
-            value = float(input(prompt))
-            if value <= 0:
-                raise ValueError
-            return value
-        except ValueError:
-            print("Invalid input. Please enter a positive number.")
 
 
 main()
